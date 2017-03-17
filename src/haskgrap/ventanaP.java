@@ -16,6 +16,7 @@ public class ventanaP extends javax.swing.JFrame {
      */
     public ventanaP() {
         initComponents();
+        editorPanel1.requestFocus();
     }
 
     /**
@@ -27,21 +28,166 @@ public class ventanaP extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelDeTab = new javax.swing.JTabbedPane();
+        panel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        editorPanel1 = new javax.swing.JEditorPane();
+        jSeparator1 = new javax.swing.JSeparator();
+        etiquetaConsola = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        editorConsola = new javax.swing.JEditorPane();
+        textoComando = new javax.swing.JTextField();
+        btnTraducir = new javax.swing.JButton();
+        barraMenu = new javax.swing.JMenuBar();
+        menuArchivo = new javax.swing.JMenu();
+        menuNuevo = new javax.swing.JMenuItem();
+        menuAbrir = new javax.swing.JMenuItem();
+        menuGuardar = new javax.swing.JMenuItem();
+        menuGuardarC = new javax.swing.JMenuItem();
+        menuServidor = new javax.swing.JMenu();
+        menuPublicar = new javax.swing.JMenuItem();
+        menuLogin = new javax.swing.JMenuItem();
+        menuCerrar = new javax.swing.JMenuItem();
+        menuImportar = new javax.swing.JMenuItem();
+        menuEjecutar = new javax.swing.JMenu();
+        menuTraducir = new javax.swing.JMenuItem();
+        menuReporte = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jScrollPane2.setViewportView(editorPanel1);
+
+        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
+        panel1.setLayout(panel1Layout);
+        panel1Layout.setHorizontalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panel1Layout.setVerticalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelDeTab.addTab("Tab1", panel1);
+
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+
+        etiquetaConsola.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        etiquetaConsola.setText("Consola");
+
+        editorConsola.setText("local>>");
+        jScrollPane1.setViewportView(editorConsola);
+
+        textoComando.setText(">>");
+
+        btnTraducir.setText("Traducir");
+
+        menuArchivo.setText("Archivo");
+
+        menuNuevo.setText("Nuevo");
+        menuNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuNuevoActionPerformed(evt);
+            }
+        });
+        menuArchivo.add(menuNuevo);
+
+        menuAbrir.setText("Abrir");
+        menuArchivo.add(menuAbrir);
+
+        menuGuardar.setText("Guardar");
+        menuArchivo.add(menuGuardar);
+
+        menuGuardarC.setText("Guardar Como...");
+        menuArchivo.add(menuGuardarC);
+
+        barraMenu.add(menuArchivo);
+
+        menuServidor.setText("Servidor");
+
+        menuPublicar.setText("Publicar");
+        menuServidor.add(menuPublicar);
+
+        menuLogin.setText("Login");
+        menuServidor.add(menuLogin);
+
+        menuCerrar.setText("Cerrar");
+        menuServidor.add(menuCerrar);
+
+        menuImportar.setText("Importar");
+        menuServidor.add(menuImportar);
+
+        barraMenu.add(menuServidor);
+
+        menuEjecutar.setText("Ejecutar");
+
+        menuTraducir.setText("Traducir");
+        menuEjecutar.add(menuTraducir);
+
+        menuReporte.setText("Reportes");
+        menuEjecutar.add(menuReporte);
+
+        barraMenu.add(menuEjecutar);
+
+        setJMenuBar(barraMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 661, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(etiquetaConsola, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1)
+                        .addComponent(textoComando))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelDeTab, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTraducir)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 334, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(panelDeTab, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(btnTraducir)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(etiquetaConsola)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoComando, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoActionPerformed
+       System.out.println("Click en nuevo");
+       nuevo();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuNuevoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,7 +223,67 @@ public class ventanaP extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void nuevo(){
+        
+        javax.swing.JScrollPane jScrollPaneN= new javax.swing.JScrollPane();
+        javax.swing.JPanel panelN = new javax.swing.JPanel();
+        javax.swing.JEditorPane editorPanelN = new javax.swing.JEditorPane();
+        //////
+        jScrollPaneN.setViewportView(editorPanelN);
+
+        javax.swing.GroupLayout disenioPanelN = new javax.swing.GroupLayout(panelN);
+        panelN.setLayout(disenioPanelN);
+        disenioPanelN.setHorizontalGroup(
+            disenioPanelN.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, disenioPanelN.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPaneN, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        disenioPanelN.setVerticalGroup(
+            disenioPanelN.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, disenioPanelN.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPaneN, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelDeTab.addTab("Tab Nueva", panelN);
+        /////
+        editorConsola.setText(panelDeTab.getComponentCount()+" ");
+        panelDeTab.setSelectedIndex(panelDeTab.getComponentCount()-1);
+        editorPanelN.requestFocus();
+    }
+    
+    public void abrir(){
+    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar barraMenu;
+    private javax.swing.JButton btnTraducir;
+    private javax.swing.JEditorPane editorConsola;
+    private javax.swing.JEditorPane editorPanel1;
+    private javax.swing.JLabel etiquetaConsola;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JMenuItem menuAbrir;
+    private javax.swing.JMenu menuArchivo;
+    private javax.swing.JMenuItem menuCerrar;
+    private javax.swing.JMenu menuEjecutar;
+    private javax.swing.JMenuItem menuGuardar;
+    private javax.swing.JMenuItem menuGuardarC;
+    private javax.swing.JMenuItem menuImportar;
+    private javax.swing.JMenuItem menuLogin;
+    private javax.swing.JMenuItem menuNuevo;
+    private javax.swing.JMenuItem menuPublicar;
+    private javax.swing.JMenuItem menuReporte;
+    private javax.swing.JMenu menuServidor;
+    private javax.swing.JMenuItem menuTraducir;
+    private javax.swing.JPanel panel1;
+    private javax.swing.JTabbedPane panelDeTab;
+    private javax.swing.JTextField textoComando;
     // End of variables declaration//GEN-END:variables
 }
