@@ -16,7 +16,9 @@ public class HaskGrap {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        ventanaP nVentana= new ventanaP();
         System.out.printf("hola mundo");
+        nVentana.show();
     }
     
 }
