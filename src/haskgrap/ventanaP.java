@@ -210,7 +210,7 @@ public class ventanaP extends javax.swing.JFrame {
 
     private void menuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoActionPerformed
        System.out.println("Click en nuevo");
-       nuevo(" ","Nuevo Tab");
+       nuevo(" ","Tab Nueva");
         // TODO add your handling code here:
     }//GEN-LAST:event_menuNuevoActionPerformed
 
@@ -225,10 +225,16 @@ public class ventanaP extends javax.swing.JFrame {
     }//GEN-LAST:event_menuGuardarActionPerformed
 
     private void menuGuardarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGuardarCActionPerformed
-             int i=panelDeTab.getSelectedIndex();
-           
         
-        editorConsola.setText(this.panelDeTab.getTitleAt(i));
+        int i=panelDeTab.getSelectedIndex();
+        if (this.panelDeTab.getTitleAt(i).equals("Tab Nueva")){
+            guardar();
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Archivo guardado");
+            
+        }
+        //editorConsola.setText(this.panelDeTab.getTitleAt(i));
     }//GEN-LAST:event_menuGuardarCActionPerformed
 
     /**
