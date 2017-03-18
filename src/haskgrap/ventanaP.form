@@ -21,16 +21,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Abrir"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAbrirActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuGuardar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Guardar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuGuardarActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuGuardarC">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Guardar Como..."/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuGuardarCActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -135,7 +144,7 @@
                       <Component id="panelDeTab" min="-2" pref="331" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
                       <Component id="btnTraducir" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -164,8 +173,8 @@
         <Container class="javax.swing.JPanel" name="panel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Tab1">
-                <Property name="tabTitle" type="java.lang.String" value="Tab1"/>
+              <JTabbedPaneConstraints tabName="Tab Nueva">
+                <Property name="tabTitle" type="java.lang.String" value="Tab Nueva"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

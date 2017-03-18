@@ -5,6 +5,16 @@
  */
 package haskgrap;
 
+
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentListener;
+import java.io.*;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+ 
+
 /**
  *
  * @author User
@@ -74,7 +84,7 @@ public class ventanaP extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelDeTab.addTab("Tab1", panel1);
+        panelDeTab.addTab("Tab Nueva", panel1);
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -99,12 +109,27 @@ public class ventanaP extends javax.swing.JFrame {
         menuArchivo.add(menuNuevo);
 
         menuAbrir.setText("Abrir");
+        menuAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAbrirActionPerformed(evt);
+            }
+        });
         menuArchivo.add(menuAbrir);
 
         menuGuardar.setText("Guardar");
+        menuGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuGuardarActionPerformed(evt);
+            }
+        });
         menuArchivo.add(menuGuardar);
 
         menuGuardarC.setText("Guardar Como...");
+        menuGuardarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuGuardarCActionPerformed(evt);
+            }
+        });
         menuArchivo.add(menuGuardarC);
 
         barraMenu.add(menuArchivo);
@@ -165,7 +190,7 @@ public class ventanaP extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addComponent(panelDeTab, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
+                        .addGap(176, 176, 176)
                         .addComponent(btnTraducir)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,9 +210,26 @@ public class ventanaP extends javax.swing.JFrame {
 
     private void menuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoActionPerformed
        System.out.println("Click en nuevo");
-       nuevo();
+       nuevo(" ","Nuevo Tab");
         // TODO add your handling code here:
     }//GEN-LAST:event_menuNuevoActionPerformed
+
+    private void menuAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAbrirActionPerformed
+       abrir();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuAbrirActionPerformed
+
+    private void menuGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGuardarActionPerformed
+        guardar();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuGuardarActionPerformed
+
+    private void menuGuardarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGuardarCActionPerformed
+             int i=panelDeTab.getSelectedIndex();
+           
+        
+        editorConsola.setText(this.panelDeTab.getTitleAt(i));
+    }//GEN-LAST:event_menuGuardarCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,14 +266,14 @@ public class ventanaP extends javax.swing.JFrame {
         });
     }
     
-    public void nuevo(){
+    public void nuevo(String texto,String nombre){
         
         javax.swing.JScrollPane jScrollPaneN= new javax.swing.JScrollPane();
         javax.swing.JPanel panelN = new javax.swing.JPanel();
         javax.swing.JEditorPane editorPanelN = new javax.swing.JEditorPane();
         //////
         jScrollPaneN.setViewportView(editorPanelN);
-
+        
         javax.swing.GroupLayout disenioPanelN = new javax.swing.GroupLayout(panelN);
         panelN.setLayout(disenioPanelN);
         disenioPanelN.setHorizontalGroup(
@@ -249,17 +291,66 @@ public class ventanaP extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelDeTab.addTab("Tab Nueva", panelN);
+        panelDeTab.addTab(nombre, panelN);
         /////
+        
         editorConsola.setText(panelDeTab.getComponentCount()+" ");
         panelDeTab.setSelectedIndex(panelDeTab.getComponentCount()-1);
+        editorPanelN.setText(texto);
         editorPanelN.requestFocus();
+        
     }
     
     public void abrir(){
+        
+        JFileChooser fc=new JFileChooser();//Creamos el objeto JFileChooser
+        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);//Indicamos lo que podemos seleccionar
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.TXT,*.hk,*.gk", "txt","hk","gk");//Creamos el filtro
+        fc.setFileFilter(filtro);//Le indicamos el filtro
+        int seleccion=fc.showOpenDialog(this);//Abrimos la ventana, guardamos la opcion seleccionada por el usuario
+        if(seleccion==JFileChooser.APPROVE_OPTION){//Si el usuario, pincha en aceptar
+            File fichero=fc.getSelectedFile();  //Seleccionamos el fichero
+            try(FileReader fr=new FileReader(fichero)){
+                BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fichero.getAbsolutePath()), "ISO-8859-1"));
+                String sCadena, concat="";
+                while ((sCadena = in.readLine())!=null) {
+                        concat=concat+sCadena+"\n";
+                }
+                nuevo(concat,fichero.getName());
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
     
+    public void guardar(){
+        int i=panelDeTab.getSelectedIndex();
+        String txt;
+        //editorConsola.setText("estor en la pestania"+i);
+        txt=((JEditorPane)((JViewport)((JScrollPane)((JPanel)this.panelDeTab.getComponent(i)).getComponent(0)).getComponent(0)).getComponent(0)).getText();
+        guardarD(txt);
     }
 
+    public void guardarD(String texto){
+    
+        JFileChooser fc=new JFileChooser(); //Creamos el objeto JFileChooser
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.TXT,*.hk,*.gk", "txt","hk","gk");//Creamos el filtro
+        fc.setFileFilter(filtro);
+        int seleccion=fc.showSaveDialog(this);//Abrimos la ventana, guardamos la opcion seleccionada por el usuario
+        if(seleccion==JFileChooser.APPROVE_OPTION){//Si el usuario, pincha en aceptar
+            File fichero=fc.getSelectedFile();//Seleccionamos el fichero
+
+            try(FileWriter fw=new FileWriter(fichero)){
+                fw.write(texto);//Escribimos el texto en el fichero
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+
+        }
+    
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton btnTraducir;
